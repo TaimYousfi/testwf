@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
-public class TicTacToe {
-    static char[][] board = new char[3][3];
+public class TicTacToe { static char[][] board = new char[3][3];
     static char currentPlayer = 'X';
     static boolean gameOver = false;
 

@@ -4,36 +4,36 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Ampel {
-    private static JLabel rotLabel;
-    private static JLabel orangeLabel;
-    private static JLabel grünLabel;
+    private static JLabel rot;
+    private static JLabel orange;
+    private static JLabel grün;
 
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("Ampel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(250, 450);
+        frame.setSize(425, 350);
 
         JPanel panel = new JPanel();
         frame.add(panel);
 
-        rotLabel = new JLabel("Rot", SwingConstants.CENTER);
-        rotLabel.setFont(new Font("Serif", Font.BOLD, 40));
-        rotLabel.setForeground(Color.RED);
+        rot = new JLabel("Rot", SwingConstants.CENTER);
+        rot.setFont(new Font("Serif", Font.BOLD, 100));
+        rot.setForeground(Color.RED);
 
-        orangeLabel = new JLabel("Orange", SwingConstants.CENTER);
-        orangeLabel.setFont(new Font("Serif", Font.BOLD, 40));
-        orangeLabel.setForeground(Color.ORANGE);
+        orange = new JLabel("Orange", SwingConstants.CENTER);
+        orange.setFont(new Font("Serif", Font.BOLD, 100));
+        orange.setForeground(Color.ORANGE);
 
-        grünLabel = new JLabel("Grün", SwingConstants.CENTER);
-        grünLabel.setFont(new Font("Serif", Font.BOLD, 40));
-        grünLabel.setForeground(Color.GREEN);
+        grün = new JLabel("Grün", SwingConstants.CENTER);
+        grün.setFont(new Font("Serif", Font.BOLD, 100));
+        grün.setForeground(Color.GREEN);
 
 
         panel.setLayout(new CardLayout());
-        panel.add(rotLabel);
-        panel.add(orangeLabel);
-        panel.add(grünLabel);
+        panel.add(rot);
+        panel.add(orange);
+        panel.add(grün);
 
 
         Timer timer = new Timer();
@@ -43,23 +43,23 @@ public class Ampel {
             @Override
             public void run() {
 
-                rotLabel.setVisible(false);
-                orangeLabel.setVisible(false);
-                grünLabel.setVisible(false);
+                rot.setVisible(false);
+                orange.setVisible(false);
+                grün.setVisible(false);
 
 
                 if (currentIndex == 0) {
-                    rotLabel.setVisible(true);
+                    rot.setVisible(true);
                 } else if (currentIndex == 1) {
-                    orangeLabel.setVisible(true);
+                    orange.setVisible(true);
                 } else {
-                    grünLabel.setVisible(true);
+                    grün.setVisible(true);
                 }
 
                 // Index für den nächsten Wechsel
                 currentIndex = (currentIndex + 1) % 3;
             }
-        }, 0, 3000);
+        }, 0, 2000);
 
 
         frame.setVisible(true);

@@ -10,12 +10,15 @@ public class Ampel {
 
     public static void main(String[] args) {
 
+
         JFrame frame = new JFrame("Ampel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(425, 350);
 
+
         JPanel panel = new JPanel();
         frame.add(panel);
+
 
         rot = new JLabel("Rot", SwingConstants.CENTER);
         rot.setFont(new Font("Serif", Font.BOLD, 100));
@@ -47,17 +50,20 @@ public class Ampel {
                 orange.setVisible(false);
                 grün.setVisible(false);
 
+                currentIndex = (currentIndex + 1) % 3;
 
                 if (currentIndex == 0) {
-                    rot.setVisible(true);
+                    rot.setVisible(true); // Red
+
                 } else if (currentIndex == 1) {
-                    orange.setVisible(true);
-                } else {
-                    grün.setVisible(true);
+                    orange.setVisible(true); // Orange
+
+                } else if (currentIndex == 2) {
+                    grün.setVisible(true); // Green
                 }
 
-                // Index für den nächsten Wechsel
-                currentIndex = (currentIndex + 1) % 3;
+
+
             }
         }, 0, 2000);
 

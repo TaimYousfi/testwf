@@ -20,7 +20,7 @@ public class Ampel_Steuerung {
             public void run() {
                 for (int i = 0; i < ampeln.length; i++) {
 
-                    if (i == 0 || i == 2) {
+                    if (i == 0 || i == 1) {
                         switch (ampeln[i].getZustand()) {
                             case GRÜN:
 
@@ -54,7 +54,7 @@ public class Ampel_Steuerung {
             @Override
             public void run() {
                 for (int i = 0; i < ampeln.length; i++) {
-                    if (i == 1 || i == 3) {
+                    if (i == 2 || i == 3) {
 
                         switch (ampeln[i].getZustand()) {
                             case ROT:
@@ -78,6 +78,6 @@ public class Ampel_Steuerung {
         };
 
         timer.scheduleAtFixedRate(task1und3, 0, 2000);
-        timer.scheduleAtFixedRate(task2und4, 2000, 2000);
+        timer.scheduleAtFixedRate(task2und4, 4000, 2000);
     }
 }

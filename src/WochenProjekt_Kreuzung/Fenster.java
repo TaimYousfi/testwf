@@ -2,17 +2,20 @@ package WochenProjekt_Kreuzung;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Fenster extends Canvas {
-    private final Zeichne_Kreuzung kreuzung;
+    private final ZeichneKreuzung kreuzung;
+    private final ArrayList<Fahrzeug> fahrzeugliste;
     private final AmpelZeichner[] ampelZeichner;
 
     private JFrame frame;
 
-    public Fenster(Zeichne_Kreuzung kreuzung, AmpelZeichner... ampelZeichner) {
+    public Fenster(ZeichneKreuzung kreuzung, ArrayList<Fahrzeug> fahrzeugliste, AmpelZeichner... ampelZeichner) {
         this.kreuzung = kreuzung;
+        this.fahrzeugliste = fahrzeugliste;
         this.ampelZeichner = ampelZeichner;
 
         frame = new JFrame("Praktikum Projekt");
@@ -36,10 +39,14 @@ public class Fenster extends Canvas {
             @Override
             public void run() {
                 repaint();
+
+
             }
         };
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(timerTask, 0, 500);
+
+
     }
 
     @Override
@@ -47,6 +54,10 @@ public class Fenster extends Canvas {
         kreuzung.zeichnen(graphics);
         for (AmpelZeichner ampel : ampelZeichner) {
             ampel.zeichnen(graphics);
+
+        }
+        for (Fahrzeug fahrzeug : fahrzeugliste) {
+            fahrzeug.zeichnen(graphics);
 
         }
     }

@@ -1,19 +1,55 @@
 package WochenProjekt_Kreuzung;
 
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
+
 public class Main {
     public static void main(String[] args) {
 
-        Zeichne_Kreuzung kreuzung = new Zeichne_Kreuzung();
-        AmpelZeichner ampel1 = new AmpelZeichner(375, 0);
-        AmpelZeichner ampel2 = new AmpelZeichner(375, 750 - 50);
-        AmpelZeichner ampel3 = new AmpelZeichner(0, 375);
-        AmpelZeichner ampel4 = new AmpelZeichner(750 - 25, 375);
+        ZeichneKreuzung kreuzung = new ZeichneKreuzung();
 
 
-        Fenster fenster = new Fenster(kreuzung, ampel1, ampel2, ampel3, ampel4);
+        AmpelZustand ampeloben = new AmpelZustand(AktuelleFarbe.ROT, 0, 3000);
+        AmpelZustand ampelUnten = new AmpelZustand(AktuelleFarbe.ROT, 0, 3000);
+        AmpelZustand ampelLinks = new AmpelZustand(AktuelleFarbe.GRUEN, 0, 3000);
+        AmpelZustand ampelRechts = new AmpelZustand(AktuelleFarbe.GRUEN, 0, 3000);
+
+        AmpelZeichner ampelZeichnerOben = new AmpelZeichner(375,0,ampeloben);
+        AmpelZeichner ampelZeichnerunten = new AmpelZeichner(375,650,ampelUnten);
+        AmpelZeichner ampelZeichnerLinks = new AmpelZeichner(120, 390, ampelLinks);
+        AmpelZeichner ampelZeichnerRechts = new AmpelZeichner(525,390, ampelRechts);
 
 
-        Ampel_Steuerung ampelSteuerung = new Ampel_Steuerung(ampel1, ampel2, ampel3, ampel4);
+
+        Fahrzeug fahrzeug = new Fahrzeug();
+        ArrayList<Fahrzeug> fahrzeugliste=new ArrayList<>();
+        fahrzeugliste.add(fahrzeug);
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                for (Fahrzeug fahr : fahrzeugliste) {
+                    fahr.fahreNachRechts();
+
+                }
+            }
+        };
+        Timer timer = new Timer();
+
+        timer.scheduleAtFixedRate(task, 0 , 1000);
+
+
+
+
+        Fenster fenster = new Fenster(kreuzung, fahrzeugliste,  ampelZeichnerOben,ampelZeichnerunten,ampelZeichnerLinks,ampelZeichnerRechts);
+
+
+
+
+
+        AmpelSteuerung ampelSteuerung = new AmpelSteuerung(ampeloben, ampelUnten, ampelLinks, ampelRechts);
         ampelSteuerung.startAmpelsteuerung();
     }
 }

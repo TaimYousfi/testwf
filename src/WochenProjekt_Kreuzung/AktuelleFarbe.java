@@ -1,5 +1,5 @@
 package WochenProjekt_Kreuzung;
 
 public enum AktuelleFarbe {
-    GRÜN,ROT,GELB,ROT_GELB
+    GRUEN,ROT,GELB,ROT_GELB
 }

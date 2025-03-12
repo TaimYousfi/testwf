@@ -2,7 +2,7 @@ package WochenProjekt_Kreuzung;
 
 import java.awt.*;
 
-public class Zeichne_Kreuzung {
+public class ZeichneKreuzung {
   public void zeichnen(Graphics graphics) {
     graphics.setColor(Color.BLACK);
 

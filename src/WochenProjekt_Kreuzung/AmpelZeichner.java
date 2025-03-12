@@ -5,37 +5,38 @@ import java.awt.*;
 public class AmpelZeichner {
     private int x;
     private int y;
-    private AktuelleFarbe aktuelleFarbe;
+    private AmpelZustand ampelZustand;
 
     private final int hoehe = 25;
 
-    public AmpelZeichner(int x, int y) {
+    public AmpelZeichner (int x, int y,AmpelZustand ampelZustand) {
         this.x = x;
         this.y = y;
-        this.aktuelleFarbe = AktuelleFarbe.ROT;
+         this.ampelZustand = ampelZustand;
+
     }
 
     public void zeichnen(Graphics graphics) {
         graphics.setColor(Color.BLACK);
         graphics.fillRect(x - 10, y, 45, 130);
 
-        drawLight(graphics, Color.DARK_GRAY, 0);
-        drawLight(graphics, Color.DARK_GRAY, 40);
-        drawLight(graphics, Color.DARK_GRAY, 80);
+        drawLight(graphics, Color.DARK_GRAY, 15);
+        drawLight(graphics, Color.DARK_GRAY, 55);
+        drawLight(graphics, Color.DARK_GRAY, 95);
 
-        switch (aktuelleFarbe) {
+        switch (ampelZustand.getAktuelleFarbe()) {
             case ROT:
-                drawLight(graphics, Color.RED, 0);
+                drawLight(graphics, Color.RED, 15);
                 break;
             case GELB:
-                drawLight(graphics, Color.YELLOW, 40);
+                drawLight(graphics, Color.YELLOW, 55);
                 break;
-            case GRÜN:
-                drawLight(graphics, Color.GREEN, 80);
+            case GRUEN:
+                drawLight(graphics, Color.GREEN, 95);
                 break;
             case ROT_GELB:
-                drawLight(graphics, Color.RED, 0);
-                drawLight(graphics, Color.YELLOW, 40);
+                drawLight(graphics, Color.RED, 15);
+                drawLight(graphics, Color.YELLOW, 55);
                 break;
         }
     }
@@ -46,11 +47,4 @@ public class AmpelZeichner {
         graphics.fillOval(x, y + yOffset, hoehe, hoehe);
     }
 
-    public void setAktuelleFarbe(AktuelleFarbe aktuelleFarbe) {
-        this.aktuelleFarbe = aktuelleFarbe;
-    }
-
-    public AktuelleFarbe getAktuelleFarbe() {
-        return aktuelleFarbe;
-    }
 }

@@ -1,4 +1,4 @@
-package WochenProjekt;
+package WochenProjekt_Kreuzung;
 
 import java.awt.*;
 

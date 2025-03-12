@@ -1,7 +1,4 @@
-package WochenProjekt;
-
-import javax.swing.*;
-import java.awt.*;
+package WochenProjekt_Kreuzung;
 
 public class Main {
     public static void main(String[] args) {

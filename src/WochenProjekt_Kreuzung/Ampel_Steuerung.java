@@ -4,10 +4,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Ampel_Steuerung {
-    private final Ampel_zeichnen[] ampeln;
+    private final AmpelZeichner[] ampeln;
 
 
-    public Ampel_Steuerung(Ampel_zeichnen... ampeln) {
+    public Ampel_Steuerung(AmpelZeichner... ampeln) {
         this.ampeln = ampeln;
     }
 
@@ -21,21 +21,21 @@ public class Ampel_Steuerung {
                 for (int i = 0; i < ampeln.length; i++) {
 
                     if (i == 0 || i == 1) {
-                        switch (ampeln[i].getZustand()) {
+                        switch (ampeln[i].getAktuelleFarbe()) {
                             case GRÜN:
 
-                                ampeln[i].setZustand(Aktuelle_Farbe.GELB);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.GELB);
                                 break;
                             case GELB:
 
-                                ampeln[i].setZustand(Aktuelle_Farbe.ROT);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.ROT);
                                 break;
                             case ROT:
-                                ampeln[i].setZustand(Aktuelle_Farbe.ROT_GELB);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.ROT_GELB);
                                 break;
 
                             case ROT_GELB:
-                                ampeln[i].setZustand(Aktuelle_Farbe.GRÜN);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.GRÜN);
                                 break;
 
 
@@ -56,19 +56,19 @@ public class Ampel_Steuerung {
                 for (int i = 0; i < ampeln.length; i++) {
                     if (i == 2 || i == 3) {
 
-                        switch (ampeln[i].getZustand()) {
+                        switch (ampeln[i].getAktuelleFarbe()) {
                             case ROT:
-                                ampeln[i].setZustand(Aktuelle_Farbe.ROT_GELB);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.ROT_GELB);
                                 break;
                             case GELB:
-                                ampeln[i].setZustand(Aktuelle_Farbe.ROT);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.ROT);
                                 break;
                             case GRÜN:
-                                ampeln[i].setZustand(Aktuelle_Farbe.GELB);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.GELB);
                                 break;
 
                             case ROT_GELB:
-                                ampeln[i].setZustand(Aktuelle_Farbe.GRÜN);
+                                ampeln[i].setAktuelleFarbe(AktuelleFarbe.GRÜN);
                                 break;
 
                         }

@@ -7,11 +7,11 @@ import java.util.TimerTask;
 
 public class Fenster extends Canvas {
     private final Zeichne_Kreuzung kreuzung;
-    private final Ampel_zeichnen[] ampelZeichner;
+    private final AmpelZeichner[] ampelZeichner;
 
     private JFrame frame;
 
-    public Fenster(Zeichne_Kreuzung kreuzung, Ampel_zeichnen... ampelZeichner) {
+    public Fenster(Zeichne_Kreuzung kreuzung, AmpelZeichner... ampelZeichner) {
         this.kreuzung = kreuzung;
         this.ampelZeichner = ampelZeichner;
 
@@ -45,7 +45,7 @@ public class Fenster extends Canvas {
     @Override
     public void paint(Graphics graphics) {
         kreuzung.zeichnen(graphics);
-        for (Ampel_zeichnen ampel : ampelZeichner) {
+        for (AmpelZeichner ampel : ampelZeichner) {
             ampel.zeichnen(graphics);
 
         }

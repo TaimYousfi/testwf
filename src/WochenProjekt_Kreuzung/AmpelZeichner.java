@@ -2,17 +2,17 @@ package WochenProjekt_Kreuzung;
 
 import java.awt.*;
 
-public class Ampel_zeichnen {
+public class AmpelZeichner {
     private int x;
     private int y;
-    private Aktuelle_Farbe zustand;
+    private AktuelleFarbe aktuelleFarbe;
 
-    private final int höhe = 25;
+    private final int hoehe = 25;
 
-    public Ampel_zeichnen(int x, int y) {
+    public AmpelZeichner(int x, int y) {
         this.x = x;
         this.y = y;
-        this.zustand = Aktuelle_Farbe.ROT;
+        this.aktuelleFarbe = AktuelleFarbe.ROT;
     }
 
     public void zeichnen(Graphics graphics) {
@@ -23,7 +23,7 @@ public class Ampel_zeichnen {
         drawLight(graphics, Color.DARK_GRAY, 40);
         drawLight(graphics, Color.DARK_GRAY, 80);
 
-        switch (zustand) {
+        switch (aktuelleFarbe) {
             case ROT:
                 drawLight(graphics, Color.RED, 0);
                 break;
@@ -43,14 +43,14 @@ public class Ampel_zeichnen {
     private void drawLight(Graphics graphics, Color color, int yOffset) {
 
         graphics.setColor(color);
-        graphics.fillOval(x, y + yOffset, höhe, höhe);
+        graphics.fillOval(x, y + yOffset, hoehe, hoehe);
     }
 
-    public void setZustand(Aktuelle_Farbe zustand) {
-        this.zustand = zustand;
+    public void setAktuelleFarbe(AktuelleFarbe aktuelleFarbe) {
+        this.aktuelleFarbe = aktuelleFarbe;
     }
 
-    public Aktuelle_Farbe getZustand() {
-        return zustand;
+    public AktuelleFarbe getAktuelleFarbe() {
+        return aktuelleFarbe;
     }
 }

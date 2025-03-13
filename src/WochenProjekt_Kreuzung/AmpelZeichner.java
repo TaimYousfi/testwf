@@ -3,11 +3,9 @@ package WochenProjekt_Kreuzung;
 import java.awt.*;
 
 public class AmpelZeichner {
-    private int x;
-    private int y;
-    private AmpelZustand ampelZustand;
-
-    private final int hoehe = 25;
+    private final int x;
+    private final int y;
+    private final AmpelZustand ampelZustand;
 
     public AmpelZeichner (int x, int y,AmpelZustand ampelZustand) {
         this.x = x;
@@ -44,6 +42,7 @@ public class AmpelZeichner {
     private void drawLight(Graphics graphics, Color color, int yOffset) {
 
         graphics.setColor(color);
+        int hoehe = 25;
         graphics.fillOval(x, y + yOffset, hoehe, hoehe);
     }
 

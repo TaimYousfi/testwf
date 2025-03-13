@@ -11,14 +11,12 @@ public class Fenster extends Canvas {
     private final ArrayList<Fahrzeug> fahrzeugliste;
     private final AmpelZeichner[] ampelZeichner;
 
-    private JFrame frame;
-
     public Fenster(ZeichneKreuzung kreuzung, ArrayList<Fahrzeug> fahrzeugliste, AmpelZeichner... ampelZeichner) {
         this.kreuzung = kreuzung;
         this.fahrzeugliste = fahrzeugliste;
         this.ampelZeichner = ampelZeichner;
 
-        frame = new JFrame("Praktikum Projekt");
+        JFrame frame = new JFrame("Praktikum Projekt");
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setBackground(Color.blue);
@@ -34,19 +32,14 @@ public class Fenster extends Canvas {
     }
 
     private void zeichneNeu() {
-
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 repaint();
-
-
             }
         };
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 500);
-
-
+        timer.scheduleAtFixedRate(timerTask, 0, 40);
     }
 
     @Override
@@ -54,11 +47,9 @@ public class Fenster extends Canvas {
         kreuzung.zeichnen(graphics);
         for (AmpelZeichner ampel : ampelZeichner) {
             ampel.zeichnen(graphics);
-
         }
         for (Fahrzeug fahrzeug : fahrzeugliste) {
             fahrzeug.zeichnen(graphics);
-
         }
     }
 }

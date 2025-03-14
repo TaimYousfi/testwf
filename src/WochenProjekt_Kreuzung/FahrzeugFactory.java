@@ -29,7 +29,7 @@ public class FahrzeugFactory {
             case OBEN:
                 return 315;
             case UNTEN:
-                return 335;
+                return 350;
             default:
                 return 0;
         }
@@ -40,11 +40,11 @@ public class FahrzeugFactory {
             case RECHTS:
                 return 315;
             case LINKS:
-                return 335;
+                return 350;
             case OBEN:
                 return 750;
             case UNTEN:
-                return 10;
+                return 200;
             default:
                 return 0;
         }

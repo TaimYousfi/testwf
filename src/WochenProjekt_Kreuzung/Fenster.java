@@ -40,7 +40,7 @@ public class Fenster extends Canvas {
             }
         };
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 40);
+        timer.scheduleAtFixedRate(timerTask, 0, 1000);
     }
 
     @Override

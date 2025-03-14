@@ -37,7 +37,7 @@ public class Main {
                 fahrzeugNotifier.addFahrzeug(fahrzeug);
             }
         };
-        autoTimer.scheduleAtFixedRate(autoTask, 1000, 1000);
+        autoTimer.scheduleAtFixedRate(autoTask, 1000, 4500);
 
         ArrayList<AmpelZustand> listeampelnzustand = new ArrayList<>();
         listeampelnzustand.add(ampelRechts);

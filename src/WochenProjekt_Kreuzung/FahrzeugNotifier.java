@@ -13,9 +13,9 @@ public class FahrzeugNotifier {
         fahrzeuge.add(fahrzeug);
     }
 
-    public void notifyFahrzeuge(AktuelleFarbe neueFarbe) {
+    public void notifyFahrzeuge(AmpelZustand ampelZustand) {
         for (Fahrzeug fahrzeug : fahrzeuge) {
-            fahrzeug.updateAmpelStatus(neueFarbe);
+            fahrzeug.updateAmpelStatus(ampelZustand);
         }
     }
 }

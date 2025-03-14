@@ -1,15 +1,16 @@
 package WochenProjekt_Kreuzung;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ObserverSteuerung {
     private final FahrzeugNotifier fahrzeugNotifier;
-    private final AmpelZustand ampelLinks;
+    private final List<AmpelZustand> ampelZustandList;
 
-    public ObserverSteuerung(FahrzeugNotifier fahrzeugNotifier, AmpelZustand ampelLinks) {
+    public ObserverSteuerung(FahrzeugNotifier fahrzeugNotifier, List<AmpelZustand> ampelZustandList) {
         this.fahrzeugNotifier = fahrzeugNotifier;
-        this.ampelLinks = ampelLinks;
+        this.ampelZustandList = ampelZustandList;
     }
 
 
@@ -20,7 +21,8 @@ public class ObserverSteuerung {
             @Override
             public void run() {
 
-                fahrzeugNotifier.notifyFahrzeuge(ampelLinks.getAktuelleFarbe());
+                for (AmpelZustand ampelZustand : ampelZustandList)
+                    fahrzeugNotifier.notifyFahrzeuge(ampelZustand);
             }
         };
 

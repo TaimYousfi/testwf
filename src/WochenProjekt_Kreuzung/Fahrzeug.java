@@ -7,6 +7,7 @@ public class Fahrzeug {
     int y = 315;
     int geschwindigkeit = 1;
     boolean stoppeBeiAmpel = true;
+    Richtung richtung = Richtung.RECHTS;
 
 
     int maxXPosition = 400;
@@ -24,7 +25,7 @@ public class Fahrzeug {
     public void fahreNachRechts() {
         if (x < maxXPosition) {
 
-            if (aktuelleAmpelFarbe == AktuelleFarbe.ROT || aktuelleAmpelFarbe == AktuelleFarbe.GELB) {
+            if (aktuelleAmpelFarbe == AktuelleFarbe.ROT || aktuelleAmpelFarbe == AktuelleFarbe.GELB || aktuelleAmpelFarbe == AktuelleFarbe.ROT_GELB) {
                 stoppeBeiAmpel = true;
             } else {
                 stoppeBeiAmpel = false;
@@ -51,8 +52,9 @@ public class Fahrzeug {
         y += geschwindigkeit;
     }
 
-    public void updateAmpelStatus(AktuelleFarbe neueFarbe) {
-        this.aktuelleAmpelFarbe = neueFarbe;
+    public void updateAmpelStatus(AmpelZustand ampelZustand) {
+        if (ampelZustand.getRichtung() == richtung)
+            this.aktuelleAmpelFarbe = ampelZustand.getAktuelleFarbe();
     }
 
     public void setMaxXPosition(int maxXPosition) {

@@ -11,10 +11,10 @@ public class Main {
         int ampelperiod = 5000;
         int ampeldelay = 0;
 
-        AmpelZustand ampeloben = new AmpelZustand(AktuelleFarbe.ROT_GELB, ampeldelay, ampelperiod);//Grün
-        AmpelZustand ampelUnten = new AmpelZustand(AktuelleFarbe.ROT_GELB, ampeldelay, ampelperiod);
-        AmpelZustand ampelLinks = new AmpelZustand(AktuelleFarbe.GELB, ampeldelay, ampelperiod);
-        AmpelZustand ampelRechts = new AmpelZustand(AktuelleFarbe.GELB, ampeldelay, ampelperiod);//Rot
+        AmpelZustand ampeloben = new AmpelZustand(AktuelleFarbe.ROT_GELB, ampeldelay, ampelperiod, Richtung.UNTEN);//Grün
+        AmpelZustand ampelUnten = new AmpelZustand(AktuelleFarbe.ROT_GELB, ampeldelay, ampelperiod, Richtung.OBEN);
+        AmpelZustand ampelLinks = new AmpelZustand(AktuelleFarbe.GELB, ampeldelay, ampelperiod, Richtung.RECHTS);
+        AmpelZustand ampelRechts = new AmpelZustand(AktuelleFarbe.GELB, ampeldelay, ampelperiod, Richtung.LINKS);//Rot
 
 
         AmpelZeichner ampelZeichnerOben = new AmpelZeichner(260, 150, ampeloben);
@@ -33,7 +33,13 @@ public class Main {
             fahrzeugNotifier.addFahrzeug(f);
         }
 
-        ObserverSteuerung observerSteuerung = new ObserverSteuerung(fahrzeugNotifier, ampelLinks);
+        ArrayList<AmpelZustand> listeampelnzustand = new ArrayList<>();
+        listeampelnzustand.add(ampelRechts);
+        listeampelnzustand.add(ampelLinks);
+        listeampelnzustand.add(ampeloben);
+        listeampelnzustand.add(ampelUnten);
+
+        ObserverSteuerung observerSteuerung = new ObserverSteuerung(fahrzeugNotifier, listeampelnzustand);
         observerSteuerung.beobachteAmpeln();
 
         Timer timer = new Timer();

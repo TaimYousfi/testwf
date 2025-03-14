@@ -6,11 +6,13 @@ public class AmpelZustand {
     private AktuelleFarbe aktuelleFarbe;
     private int startDelay;
     private int schaltDelay;
+    private Richtung richtung;
 
-    public AmpelZustand(AktuelleFarbe aktuelleFarbe, int startDelay, int schaltDelay) {
+    public AmpelZustand(AktuelleFarbe aktuelleFarbe, int startDelay, int schaltDelay, Richtung richtung) {
         this.aktuelleFarbe = aktuelleFarbe;
         this.startDelay = startDelay;
         this.schaltDelay = schaltDelay;
+        this.richtung = richtung;
     }
 
     public AktuelleFarbe getAktuelleFarbe() {
@@ -27,5 +29,9 @@ public class AmpelZustand {
 
     public int getSchaltDelay() {
         return schaltDelay;
+    }
+
+    public Richtung getRichtung() {
+        return richtung;
     }
 }

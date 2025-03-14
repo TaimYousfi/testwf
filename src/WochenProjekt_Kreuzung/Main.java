@@ -25,13 +25,19 @@ public class Main {
         FahrzeugNotifier fahrzeugNotifier = new FahrzeugNotifier();
 
 
-        Fahrzeug fahrzeug = new Fahrzeug();
-        ArrayList<Fahrzeug> fahrzeugliste = new ArrayList<>();
-        fahrzeugliste.add(fahrzeug);
 
-        for (Fahrzeug f : fahrzeugliste) {
-            fahrzeugNotifier.addFahrzeug(f);
-        }
+        ArrayList<Fahrzeug> fahrzeugliste = new ArrayList<>();
+
+        Timer autoTimer = new Timer();
+        TimerTask autoTask = new TimerTask() {
+            @Override
+            public void run() {
+                Fahrzeug fahrzeug = FahrzeugFactory.createFahrzeug();
+                fahrzeugliste.add(fahrzeug);
+                fahrzeugNotifier.addFahrzeug(fahrzeug);
+            }
+        };
+        autoTimer.scheduleAtFixedRate(autoTask, 1000, 1000);
 
         ArrayList<AmpelZustand> listeampelnzustand = new ArrayList<>();
         listeampelnzustand.add(ampelRechts);
@@ -46,8 +52,8 @@ public class Main {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                for (Fahrzeug fahr : fahrzeugliste) {
-                    fahr.fahreNachRechts();
+                for (Fahrzeug auto : new ArrayList<>(fahrzeugliste)) {
+                    auto.fahre();
                 }
             }
         };

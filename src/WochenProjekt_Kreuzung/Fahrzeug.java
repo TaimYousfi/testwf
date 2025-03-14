@@ -3,16 +3,22 @@ package WochenProjekt_Kreuzung;
 import java.awt.*;
 
 public class Fahrzeug {
-    int x = 0;
+    int x = 750;
     int y = 315;
     int geschwindigkeit = 1;
     boolean stoppeBeiAmpel = true;
-    Richtung richtung = Richtung.RECHTS;
+    Richtung richtung;
 
 
-    int maxXPosition = 400;
+    int maxXPosition = 350;
 
     private AktuelleFarbe aktuelleAmpelFarbe = AktuelleFarbe.ROT;
+
+    public Fahrzeug(int startx, int starty, Richtung startRichtung) {
+        this.x = startx;
+        this.y = starty;
+        this.richtung = startRichtung;
+    }
 
     public void zeichnen(Graphics graphics) {
         graphics.setColor(Color.BLACK);
@@ -23,13 +29,9 @@ public class Fahrzeug {
     }
 
     public void fahreNachRechts() {
-        if (x < maxXPosition) {
+        if (x > maxXPosition) {
 
-            if (aktuelleAmpelFarbe == AktuelleFarbe.ROT || aktuelleAmpelFarbe == AktuelleFarbe.GELB || aktuelleAmpelFarbe == AktuelleFarbe.ROT_GELB) {
-                stoppeBeiAmpel = true;
-            } else {
-                stoppeBeiAmpel = false;
-            }
+            stoppeBeiAmpel = aktuelleAmpelFarbe == AktuelleFarbe.ROT || aktuelleAmpelFarbe == AktuelleFarbe.GELB || aktuelleAmpelFarbe == AktuelleFarbe.ROT_GELB;
 
             if (!stoppeBeiAmpel) {
                 x += geschwindigkeit;
@@ -38,18 +40,44 @@ public class Fahrzeug {
 
             x += geschwindigkeit;
         }
-    }
 
-    public void fahreNachLinks() {
-        x -= geschwindigkeit;
     }
 
     public void fahreNachOben() {
-        y -= geschwindigkeit;
+        if (y > maxXPosition) {
+            stoppeBeiAmpel = aktuelleAmpelFarbe == AktuelleFarbe.ROT || aktuelleAmpelFarbe == AktuelleFarbe.GELB ||aktuelleAmpelFarbe == AktuelleFarbe.ROT_GELB;
+            if (!stoppeBeiAmpel) {
+                y -= geschwindigkeit;
+            }
+        } else {
+            y -= geschwindigkeit;
+        }
     }
 
     public void fahreNachUnten() {
-        y += geschwindigkeit;
+        if (y < maxXPosition) {
+            stoppeBeiAmpel = aktuelleAmpelFarbe == AktuelleFarbe.ROT ||
+                    aktuelleAmpelFarbe == AktuelleFarbe.GELB ||
+                    aktuelleAmpelFarbe == AktuelleFarbe.ROT_GELB;
+            if (!stoppeBeiAmpel) {
+                y += geschwindigkeit;
+            }
+        } else {
+            y += geschwindigkeit;
+        }
+    }
+
+    public void fahreNachLinks() {
+        if (x > maxXPosition) {
+            stoppeBeiAmpel = aktuelleAmpelFarbe == AktuelleFarbe.ROT ||
+                    aktuelleAmpelFarbe == AktuelleFarbe.GELB ||
+                    aktuelleAmpelFarbe == AktuelleFarbe.ROT_GELB;
+            if (!stoppeBeiAmpel) {
+                x -= geschwindigkeit;
+            }
+        } else {
+            x -= geschwindigkeit;
+        }
     }
 
     public void updateAmpelStatus(AmpelZustand ampelZustand) {
@@ -60,4 +88,29 @@ public class Fahrzeug {
     public void setMaxXPosition(int maxXPosition) {
         this.maxXPosition = maxXPosition;
     }
+
+    public void fahre() {
+        switch (richtung) {
+            case UNTEN:
+                fahreNachUnten();
+                setMaxXPosition(270);
+                break;
+            case LINKS:
+                fahreNachLinks();
+                setMaxXPosition(430);
+                break;
+            case OBEN:
+                fahreNachOben();
+                setMaxXPosition(430);
+                break;
+            case RECHTS:
+                fahreNachRechts();
+                setMaxXPosition(270);
+                break;
+
+        }
+    }
+
 }
+
+

@@ -49,7 +49,7 @@ public class Fenster extends Canvas {
         for (AmpelZeichner ampel : ampelZeichner) {
             ampel.zeichnen(graphics);
         }
-        for (Fahrzeug fahrzeug : fahrzeugliste) {
+        for (Fahrzeug fahrzeug : new ArrayList<>(fahrzeugliste)) {
             fahrzeug.zeichnen(graphics);
         }
     }

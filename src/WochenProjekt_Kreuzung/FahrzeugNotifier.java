@@ -14,7 +14,7 @@ public class FahrzeugNotifier {
     }
 
     public void notifyFahrzeuge(AmpelZustand ampelZustand) {
-        for (Fahrzeug fahrzeug : fahrzeuge) {
+        for (Fahrzeug fahrzeug : new ArrayList<>(fahrzeuge)) {
             fahrzeug.updateAmpelStatus(ampelZustand);
         }
     }

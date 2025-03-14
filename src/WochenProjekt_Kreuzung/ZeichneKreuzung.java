@@ -18,5 +18,7 @@ public class ZeichneKreuzung {
     // Straße 4
     graphics.drawLine(280, 800, 280, 430);
     graphics.drawLine(430, 800, 430, 430);
+    //Straße Schöner
+
   }
 }

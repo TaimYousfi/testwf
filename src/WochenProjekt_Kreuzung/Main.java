@@ -1,3 +1,4 @@
+
 package WochenProjekt_Kreuzung;
 
 import java.util.ArrayList;
@@ -10,10 +11,11 @@ public class Main {
         int ampelperiod = 5000;
         int ampeldelay = 0;
 
-        AmpelZustand ampeloben = new AmpelZustand(AktuelleFarbe.GRUEN, ampeldelay, ampelperiod);
-        AmpelZustand ampelUnten = new AmpelZustand(AktuelleFarbe.GRUEN, ampeldelay, ampelperiod);
+        AmpelZustand ampeloben = new AmpelZustand(AktuelleFarbe.ROT_GELB, ampeldelay, ampelperiod);//Grün
+        AmpelZustand ampelUnten = new AmpelZustand(AktuelleFarbe.ROT_GELB, ampeldelay, ampelperiod);
         AmpelZustand ampelLinks = new AmpelZustand(AktuelleFarbe.GELB, ampeldelay, ampelperiod);
-        AmpelZustand ampelRechts = new AmpelZustand(AktuelleFarbe.GRUEN, ampeldelay, ampelperiod);
+        AmpelZustand ampelRechts = new AmpelZustand(AktuelleFarbe.GELB, ampeldelay, ampelperiod);//Rot
+
 
         AmpelZeichner ampelZeichnerOben = new AmpelZeichner(260, 150, ampeloben);
         AmpelZeichner ampelZeichnerunten = new AmpelZeichner(430, 425, ampelUnten);

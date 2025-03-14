@@ -4,11 +4,12 @@ import java.awt.*;
 
 public class Fahrzeug {
     int x = 0;
-    int y = 333;
+    int y = 315;
     int geschwindigkeit = 1;
     boolean stoppeBeiAmpel = true;
 
-    int maxXPosition = 200;
+
+    int maxXPosition = 400;
 
     private AktuelleFarbe aktuelleAmpelFarbe = AktuelleFarbe.ROT;
 

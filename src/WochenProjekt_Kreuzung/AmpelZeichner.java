@@ -18,9 +18,9 @@ public class AmpelZeichner {
         graphics.setColor(Color.BLACK);
         graphics.fillRect(x - 10, y, 45, 130);
 
-        drawLight(graphics, Color.DARK_GRAY, 15);
-        drawLight(graphics, Color.DARK_GRAY, 55);
-        drawLight(graphics, Color.DARK_GRAY, 95);
+        drawLight(graphics, Color. GRAY, 15);
+        drawLight(graphics, Color.GRAY, 55);
+        drawLight(graphics, Color.GRAY, 95);
 
         switch (ampelZustand.getAktuelleFarbe()) {
             case ROT:
